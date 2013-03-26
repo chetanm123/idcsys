@@ -169,7 +169,7 @@ $('#datepickerbill').datepicker();
 						<p>
                         	<label>Disk:</label>
                             <span class="field">
-                            <select name="disk" class="required" id='disk' >
+                            <select name="disk"  id='disk' >
 							<option value="">Choose One</option>
 							<?php foreach($diskDetails as $disk)
 							{?>
