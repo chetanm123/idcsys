@@ -28,7 +28,7 @@
 							<th class="head1">Details</th>
                             <th class="head0">Created By</th>
                             <th class="head1">Date</th>
-							<th class="head1"></th>
+							<!-- <th class="head1"></th> -->
 							<th class="head0">Related</th>
                         </tr>
                     </thead>
@@ -38,7 +38,7 @@
 							<th class="head1">Details</th>
                             <th class="head0">Created By</th>
                             <th class="head1">Date</th>
-							<th class="head1"></th>
+							<!-- <th class="head1"></th> -->
 							<th class="head0">Related</th>
                         </tr>
                     </tfoot>
@@ -63,7 +63,8 @@
 							
 							</td>
                             <td><?php echo $list['Createdby'];?></td>
-                            <td class="center"><?php echo $list['delivery_date'];?></td><td><a href="<?php echo base_url();?>sales/sales/edit_sales/<?php echo $list['id'];?>">Edit</a></td>
+                            <td class="center"><?php echo $list['delivery_date'];?></td>
+							<!-- <td><a href="<?php echo base_url();?>sales/sales/edit_sales/<?php echo $list['id'];?>">Edit</a></td> -->
                             
                         <td><a href="<?php echo base_url();?>sales/sales/requestview/<?php echo $list['id'];?>">SReq:#<?php  echo $list['id'];?></a><br/><a href="#"></a><br/><a href="#"></a></td></tr>
 						

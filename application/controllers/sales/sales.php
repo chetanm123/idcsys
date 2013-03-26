@@ -63,7 +63,7 @@ class Sales extends CI_Controller
 			$arrInsertData["no_of_drivers"] = $this->input->post('no_of_drivers');
 			$arrInsertData["miscellaneous"] = $this->input->post('miscellaneous');
 			$arrInsertData["createdby_id"]= $this->session->userdata('userid');
-			$arrInsertData["billing_cycle_id"]= $this->session->userdata('billingcycle');
+			$arrInsertData["billing_cycle_id"]= $this->input->post('billingcycle');
 			
 			$date = $this->input->post('delivery_date');
 			$date1 = explode('/',$date);
@@ -234,6 +234,8 @@ class Sales extends CI_Controller
 				}
 				if($editFlag)
 				{
+					$arrUpdateRequestStatus['request_update_status'] = '1';
+					$arrUpdateRequestStatus = $this->sales_model->update_request_status($arrUpdateRequestStatus,$id);
 					$arrData['allDetails'] = $this->sales_model->get_all_details();
 					$arrData['middle'] = 'sales/allsales';
 					$this->load->view('sales/template',$arrData);

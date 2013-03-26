@@ -233,7 +233,7 @@ class Provision_model extends CI_Model
 		$this->db->where('request_provisions.id', $id); 
 		//echo "<pre>";print_r($this->db->from('requests'));
 		$objQuery = $this->db->get();
-		echo $this->db->last_query();exit;
+		//echo $this->db->last_query();exit;
 		return $objQuery->result_array();
 	}
 	
