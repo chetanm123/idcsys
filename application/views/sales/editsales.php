@@ -1,5 +1,7 @@
 <?php 
-//echo "<pre>";print_r($editDetails);exit;
+//echo "<pre>";print_r($editRequestDisk);
+//echo "<pre>";print_r($diskDetails);
+//exit;
 $billdt = explode('-',$editDetails[0]['billing_start']);
 //print_r($billdt);die;
 $dt = $billdt[1]."/".$billdt[2]."/".$billdt[0];
@@ -51,7 +53,7 @@ $('#datepickerbill').datepicker();
         
         <div id="contentwrapper" class="contentwrapper widgetpage">
         <?php //echo "<pre>";print_r($editDetails);exit;?>
-         <form class="stdform" name="salesForm" id="form1" action="<?php echo base_url();?>sales/sales/edit_sales/<?php echo $editDetails[0]['id']?>" method="post">
+         <form class="stdform" name="salesForm" id="form1" action="<?php echo base_url();?>index.php/sales/sales/edit_sales/<?php echo $editDetails[0]['id']?>" method="post">
 						<p>
                         	<label>Company Billed in:</label>
                             <span class="field">
@@ -181,8 +183,8 @@ $('#datepickerbill').datepicker();
                         </p>
 						<?php for($i=0;$i<$disk_cnt;$i++)
 						{?>
-						
-						<span>Qty :</span><input type="hidden" name="id[]" value="<?php echo $editRequestDisk[$i]['id'];?>" />
+						<span>Qty :</span>
+						<input type="hidden" name="id[]" value="<?php echo $editRequestDisk[$i]['id'];?>" />
 						<input type="hidden" name="request_id[]" value="<?php echo $editRequestDisk[$i]['request_id'];?>" />
 						<input type="text" name="qty[]"  id="qty" style="width:10%" value="<?php echo $editRequestDisk[$i]['quantity'];?>"/><span>Size :</span><input type="text" name="size[]" id="size" style="width:10%" value="<?php echo $editRequestDisk[$i]['size'];?>"/><span>Raid :</span><select name="raid1[]" id="raid1">
 						<?php for($j=0;$j<$cnt;$j++)
@@ -191,10 +193,20 @@ $('#datepickerbill').datepicker();
 								{?>
 									selected="selected"
 									<?php
-								}?>><?php echo $raidDetails[$j]['name'];?></option>
+								}?>><?php echo $raidDetails[$j]['name'];?>
+								</option>
 								<?php 
 							}?>
 							</select>
+							<?php 
+						for($d=0;$d<$dsk_cnt;$d++)
+						{
+							if($editRequestDisk[$i]['disc_id']==$diskDetails[$d]['id'])
+							{?>
+							&nbsp;&nbsp; <?php echo $diskDetails[$d]['name'];
+							}
+						}
+						?>
 						<br><br>
 						<?php } ?>
 						<div id='elementholder'></div>
@@ -211,8 +223,7 @@ $('#datepickerbill').datepicker();
 							}?>
                             </select>
                             </span>
-							
-                        </p>
+						</p>
 						
 						<p>
                         	<label>Memory:</label>
@@ -396,7 +407,7 @@ $('#datepickerbill').datepicker();
 
 							<?php
 								  $class = 'class="required"';
-								  echo form_dropdown('billingcycle',$billingcycle,$this->input->post("billingcycle"),$class);
+								  echo form_dropdown('billingcycle',$billingcycle,$editDetails[0]['billing_cycle_id'],$class);
 							?>
                             
                             </span>
