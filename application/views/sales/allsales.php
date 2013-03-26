@@ -28,7 +28,7 @@
 							<th class="head1">Details</th>
                             <th class="head0">Created By</th>
                             <th class="head1">Date</th>
-							<!-- <th class="head1"></th> -->
+							<th class="head1"></th> 
 							<th class="head0">Related</th>
                         </tr>
                     </thead>
@@ -38,7 +38,7 @@
 							<th class="head1">Details</th>
                             <th class="head0">Created By</th>
                             <th class="head1">Date</th>
-							<!-- <th class="head1"></th> -->
+							 <th class="head1"></th> 
 							<th class="head0">Related</th>
                         </tr>
                     </tfoot>
@@ -46,7 +46,7 @@
 						<?php foreach($allDetails as $list)
 						{?>
                         <tr class="gradeX">
-						<td><a href="<?php echo base_url();?>index.php/sales/sales/requestview/<?php echo $list['id'];?>"></a><?php echo $list['id'];?></td>
+						<td><a href="<?php echo base_url();?>sales/sales/requestview/<?php echo $list['id'];?>"></a><?php echo $list['id'];?></td>
 							<td>Processor: <?php echo $list['Processor'];?><br/>
 							Memory: <?php echo $list['memory_size'];?><br/>
 							RAID: <?php echo $list['RAID'];?><br/>
@@ -63,14 +63,13 @@
 							
 							</td>
                             <td><?php echo $list['Createdby'];?></td>
-<<<<<<< HEAD
-                            <td class="center"><?php echo $list['delivery_date'];?></td><td><a href="<?php echo base_url();?>index.php/sales/sales/edit_sales/<?php echo $list['id'];?>">Edit</a></td>
-=======
-                            <td class="center"><?php echo $list['delivery_date'];?></td>
-							<!-- <td><a href="<?php echo base_url();?>sales/sales/edit_sales/<?php echo $list['id'];?>">Edit</a></td> -->
->>>>>>> 1d076ea6e9a4954ea39192575f9541152cf4e1a9
+
+                            <td class="center"><?php echo $list['delivery_date'];?></td><td><a href="<?php echo base_url();?>sales/sales/edit_sales/<?php echo $list['id'];?>">Edit</a></td>
+
                             
-                        <td><a href="<?php echo base_url();?>index.php/sales/sales/requestview/<?php echo $list['id'];?>">SReq:#<?php  echo $list['id'];?></a><br/><a href="#"></a><br/><a href="#"></a></td></tr>
+
+                            
+                        <td><a href="<?php echo base_url();?>sales/sales/requestview/<?php echo $list['id'];?>">SReq:#<?php  echo $list['id'];?></a><br/><a href="#"></a><br/><a href="#"></a></td></tr>
 						
 						<?php } ?>
                         
