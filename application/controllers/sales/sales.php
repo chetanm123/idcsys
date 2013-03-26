@@ -37,7 +37,7 @@ class Sales extends CI_Controller
 	{
 		if($this->input->post() != "")
 		{
-			echo "<pre>";print_r($_POST);exit;
+			//echo "<pre>";print_r($_POST);exit;
 			$arrInsertData["company_id"] = $this->input->post('company_billed');
 			$arrInsertData["contact_name"] = $this->input->post('contact_name');
 			$arrInsertData["address"] = $this->input->post('address');
@@ -63,7 +63,7 @@ class Sales extends CI_Controller
 			$arrInsertData["no_of_drivers"] = $this->input->post('no_of_drivers');
 			$arrInsertData["miscellaneous"] = $this->input->post('miscellaneous');
 			$arrInsertData["createdby_id"]= $this->session->userdata('userid');
-			$arrInsertData["billing_cycle_id"]= $this->session->userdata('billingcycle');
+			$arrInsertData["billing_cycle_id"]= $this->input->post('billingcycle');
 			
 			$date = $this->input->post('delivery_date');
 			$date1 = explode('/',$date);
