@@ -1,3 +1,8 @@
+<style type="text/css">
+#update_status(
+color:green;
+)
+</style>
 <?php //echo "<pre>";print_r($activeDetails);exit;?>
 <div class="centercontent tables">
     
@@ -49,9 +54,17 @@
 						{?>
                        <tr class="gradeX">
 						
-                            <td><a href="#"></a><?php echo $list['id'];?></td>
+                            <td>
+							<?php 
+							echo $list['id']."<br/>";
+							if($list['request_update_status'] == '1')
+							{
+								echo "<span style='color:green;font-weight:bold' id='update_status'>(This Request Already updated.)</span>";
+							}
+							?>
+							</td>
                             <td>Processor: <?php echo $list['Processor'];?><br/>
-							Memory: <?php echo $list['Memory'];?><br/>
+							Memory: <?php echo $list['memory_size'];?><br/>
 							RAID: <?php echo $list['RAID'];?><br/>
 							Mailserver: <?php echo $list['Mailserver'];?><br/>
 							Panel:<?php echo $list['Panel'];?><br/>

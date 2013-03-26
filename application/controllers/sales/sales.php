@@ -234,6 +234,8 @@ class Sales extends CI_Controller
 				}
 				if($editFlag)
 				{
+					$arrUpdateRequestStatus['request_update_status'] = '1';
+					$arrUpdateRequestStatus = $this->sales_model->update_request_status($arrUpdateRequestStatus,$id);
 					$arrData['allDetails'] = $this->sales_model->get_all_details();
 					$arrData['middle'] = 'sales/allsales';
 					$this->load->view('sales/template',$arrData);

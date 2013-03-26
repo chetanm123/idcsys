@@ -150,12 +150,10 @@ class Sales_model extends CI_Model
 	}*/
 	function get_active_details()
 	{
-		$this->db->select('requests.*,users.name as Createdby,processors.name as Processor,raid_plans.name as RAID,memory_plans.name as Memory,mail_servers.name as Mailserver,operating_systems.name as OS,control_panels.name as Panel,disk_plans.name as disk_name,request_disc.quantity as disk_quantity,request_disc.size as disk_size,ram_details.quantity as ram_quantity');
+		$this->db->select('requests.*,users.name as Createdby,processors.name as Processor,raid_plans.name as RAID,mail_servers.name as Mailserver,operating_systems.name as OS,control_panels.name as Panel,disk_plans.name as disk_name,request_disc.quantity as disk_quantity,request_disc.size as disk_size');
 		$this->db->from('requests');
-		$this->db->join('processors', 'processors.id = requests.processor_id');
+		$this->db->join('processors', 'processors.id = requests.processor_id');	
 		
-		//$this->db->join('memory_plans', 'memory_plans.id = requests.memory_plan_id');
-		//$this->db->join('raid_plans','raid_plans.id = requests.raid_plan_id');
 		
 		$this->db->join('mail_servers', 'mail_servers.id = requests.mail_server_id');
 		$this->db->join('operating_systems', 'operating_systems.id = requests.os_id');
@@ -166,8 +164,8 @@ class Sales_model extends CI_Model
 		$this->db->join('request_disc', 'request_disc.request_id = requests.id');
 		$this->db->join('raid_plans', 'raid_plans.id = request_disc.raid_id');
 
-		$this->db->join('ram_details', 'ram_details.request_id = requests.id');
-		$this->db->join('memory_plans', 'memory_plans.id = ram_details.ram_id');
+		//$this->db->join('ram_details', 'ram_details.request_id = requests.id');
+		//$this->db->join('memory_plans', 'memory_plans.id = ram_details.ram_id');
 		$this->db->join('disk_plans', 'disk_plans.id = request_disc.disc_id');
 		$this->db->where('requests.active', '0'); 
 		$this->db->group_by('requests.id');
@@ -559,6 +557,21 @@ class Sales_model extends CI_Model
 				return false;
 		}	
 	}
+	
+
+	function update_request_status($arrData,$id)
+	{
+		$this->db->where('id',$id);
+		if($this->db->update('requests', $arrData))
+		{
+				return true;
+		}
+		else
+		{
+				return false;
+		}	
+	}
+	
 
 	function save_request_memory($arrData)
 	{
