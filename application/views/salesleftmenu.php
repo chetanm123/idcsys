@@ -9,10 +9,10 @@
         	<li><a href="#formsub" class="editor">Requests</a>
             	<span class="arrow"></span>
             	<ul id="formsub">
-					<li><a href="<?php echo base_url();?>index.php/sales/sales/create_sales">New</a></li>
-					<li><a href="<?php echo base_url();?>index.php/sales/sales/active_sales">Active</a></li>
-               		<li><a href="<?php echo base_url();?>index.php/sales/sales/previous_sales">Request Provisioned</a></li>
-                    <li><a href="<?php echo base_url();?>index.php/sales/sales/all_sales">All</a></li>
+					<li><a href="<?php echo base_url();?>sales/sales/create_sales">New</a></li>
+					<li><a href="<?php echo base_url();?>sales/sales/active_sales">Active</a></li>
+               		<li><a href="<?php echo base_url();?>sales/sales/previous_sales">Request Provisioned</a></li>
+                    <li><a href="<?php echo base_url();?>sales/sales/all_sales">All</a></li>
                 </ul>
             </li>
 			<!--<li><a href="#addons" class="addons">Misc</a>
