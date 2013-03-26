@@ -1,0 +1,62 @@
+<?php
+class Sales_companies extends CI_Controller 
+{
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->model('companies_model');
+		$this->load->library('form_validation');
+	}
+
+	public function index()
+	{
+		$arrData = array();
+		$arrData['companyDetails'] = $this->companies_model->get_company_details();
+		$arrData['middle'] = 'admin/companies/listcompanies';
+		$this->load->view('admin/template',$arrData);
+	}
+
+	public function add()
+	{
+		$arrInsertData["name"] = $this->input->post('firstname');
+		
+		$insertedFlag = $this->companies_model->save_company($arrInsertData);
+							
+		if($insertedFlag)
+		{
+			//$this->session->set_flashdata('success', 'Company  Added Successfully !!');
+			$arrData['companyDetails'] = $this->companies_model->get_company_details();
+			$arrData['middle'] = 'admin/companies/listcompanies';
+			$this->load->view('admin/template',$arrData);
+		}
+		else
+		{
+			//$this->session->set_flashdata('error', 'Failed to Add Comapny  !!');
+			$arrData['middle'] = 'admin/companies/listcompanies';
+			$this->load->view('admin/template',$arrData);
+		}
+	}
+
+	public function edit($id)
+	{
+		if($_POST)
+		{
+			$arrInsertData["name"] = $this->input->post('firstname');
+			$updateFlag = $this->companies_model->edit_company($arrInsertData,$id);
+			if($updateFlag)
+			{
+				$arrData['companyDetails'] = $this->companies_model->get_company_details();
+				$arrData['middle'] = 'admin/companies/listcompanies';
+				$this->load->view('admin/template',$arrData);
+			}
+		}
+		else
+		{
+			//echo "else";exit;
+			$arrData['Details'] = $this->companies_model->get_details($id);
+			$arrData['middle'] = 'admin/companies/editcompanies';
+			$this->load->view('admin/template',$arrData);
+		}
+	}
+}
+?>
